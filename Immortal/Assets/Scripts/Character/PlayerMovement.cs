@@ -6,7 +6,9 @@ public class PlayerMovement : MonoBehaviour {
 
     float speed;
     float timeval=0;
+    float timeval2 = 0;
     public float shotcd = 0.2f;
+    public float clearcd = 5.0f;
     float normalspeed = 6.0f;
     float highspeed=9.0f;
     float camRayLength = 100f;
@@ -15,7 +17,8 @@ public class PlayerMovement : MonoBehaviour {
     int ladderMask;
     int UIMask;
     Transform trans;
-    public int light = 0;
+    public int lightt = 0;
+    public int darkLight = 0;
 
     public int Health=200;
 
@@ -44,6 +47,7 @@ public class PlayerMovement : MonoBehaviour {
         if (Health <= 0)
             Die();
         timeval += Time.deltaTime;
+        timeval2 += Time.deltaTime;
         if (Input.GetButton("Fire1"))
         {
             if (timeval >= shotcd)
@@ -51,6 +55,14 @@ public class PlayerMovement : MonoBehaviour {
                 if(Turning())
                 Attack(bullet);
                 timeval = 0;
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            if (timeval2 >= clearcd)
+            {
+                ClearScreen();
+                timeval2 = 0;
             }
         }
         ChangeSpeed();
@@ -131,7 +143,12 @@ public class PlayerMovement : MonoBehaviour {
 
     public void AddLight(int amount)
     {
-        light += amount;
+        lightt += amount;
+    }
+
+    public void AddDarkLight(int amount)
+    {
+        darkLight += amount;
     }
 
    public void DecreaseHealth(int n=30)
@@ -143,5 +160,14 @@ public class PlayerMovement : MonoBehaviour {
     void Die()
     {
         Destroy(this.gameObject);
+    }
+
+    void ClearScreen()
+    {
+        var bullets = GameObject.FindGameObjectsWithTag("Bullet");
+        foreach(var bullet in bullets)
+        {
+            Destroy(bullet);
+        }
     }
 } 
