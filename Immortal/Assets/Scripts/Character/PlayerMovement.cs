@@ -9,8 +9,8 @@ public class PlayerMovement : MonoBehaviour {
     float timeval2 = 0;
     public float shotcd = 0.2f;
     public float clearcd = 5.0f;
-    float normalspeed = 6.0f;
-    float highspeed=9.0f;
+    float normalspeed = 9.0f;
+    float highspeed=13.0f;
     float camRayLength = 100f;
     float bulletForce = 1000;
     int floorMask;
