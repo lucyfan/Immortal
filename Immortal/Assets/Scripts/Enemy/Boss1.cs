@@ -33,7 +33,7 @@ public class Boss1 : MonoBehaviour
     {
         bullet = (GameObject)Resources.Load("Prefabs/bounceBullet");
         boss = this.GetComponent<Rigidbody>();
-        gunLine = GetComponent<LineRenderer>();
+       // gunLine = GetComponent<LineRenderer>();
     }
     // Update is called once per frame
     void Update()
@@ -46,7 +46,11 @@ public class Boss1 : MonoBehaviour
             case 0://旋转X + 圆形弹幕
                 attackval += Time.deltaTime;
                 timeval += Time.deltaTime;
-                shoot();
+               // var child = this.GetComponentsInChildren<LineRen>();
+                foreach(Transform child in this.transform)
+                {
+                    child.GetComponent<LineRenderer>().enabled = true;
+                }
                 Attack1();
                 if (timeval >= statetime)
                 {
@@ -54,7 +58,10 @@ public class Boss1 : MonoBehaviour
                     timeval = 0;
                     timeval2=0;
                     attackval = 0;
-                    gunLine.enabled = false;
+                    foreach (Transform child in this.transform)
+                    {
+                        child.GetComponent<LineRenderer>().enabled = false;
+                    }
                 }
                 break;
             case 1://跳跃
