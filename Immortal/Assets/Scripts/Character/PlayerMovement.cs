@@ -5,9 +5,10 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour {
 
     float speed;
-    float timeval=0;
-    float timeval2 = 0;
-    public float shotcd = 0.2f;
+    float timeval=1;
+    float timeval2 =1;
+    float timeval3 = 1;
+    public float shotcd = 0.1f;
     public float clearcd = 5.0f;
     float normalspeed = 9.0f;
     float highspeed=13.0f;
@@ -19,7 +20,7 @@ public class PlayerMovement : MonoBehaviour {
     Transform trans;
     public int lightt = 0;
     public int darkLight = 0;
-
+    public float JumpHeight=1;
     public int Health=200;
 
     public Transform outpoint;
@@ -48,12 +49,13 @@ public class PlayerMovement : MonoBehaviour {
             Die();
         timeval += Time.deltaTime;
         timeval2 += Time.deltaTime;
+        timeval3 += Time.deltaTime;
         if (Input.GetButton("Fire1"))
         {
             if (timeval >= shotcd)
             {
-                if(Turning())
-                Attack(bullet);
+               if(Turning())
+               Attack(bullet);
                 timeval = 0;
             }
         }
@@ -63,6 +65,15 @@ public class PlayerMovement : MonoBehaviour {
             {
                 ClearScreen();
                 timeval2 = 0;
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Debug.Log("1");
+            if (timeval3 >= 1.0f)
+            {
+                this.GetComponent<Rigidbody>().AddForce(this.transform.up * JumpHeight);
+                timeval3 = 0;
             }
         }
         ChangeSpeed();

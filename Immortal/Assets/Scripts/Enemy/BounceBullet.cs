@@ -11,6 +11,12 @@ public class BounceBullet : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.tag == "Player")
+        {
+
+            other.GetComponent<PlayerMovement>().DecreaseHealth(30);
+            Destroy(this.gameObject);
+        }
         if (other.name == "Wall1" || other.name == "Wall2")
         {
             rigi.velocity = new Vector3(rigi.velocity.x, rigi.velocity.y, -rigi.velocity.z);
@@ -23,7 +29,7 @@ public class BounceBullet : MonoBehaviour {
             if (timeval >= 0.1f)
                 health--;
         }
-
+       
     }
 
     // Use this for initialization
