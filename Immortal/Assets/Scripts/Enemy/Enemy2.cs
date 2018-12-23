@@ -15,7 +15,7 @@ public class Enemy2 : MonoBehaviour
     public float bulletSpeed;
 
     bool AlertIsTrue;
-    int Health=70;
+    int Health=1000;
     Transform player;
     GameObject bullet;
     GameObject darkLight;
