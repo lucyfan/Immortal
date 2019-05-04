@@ -1586,6 +1586,7 @@ GameObject:
   - component: {fileID: 587074833}
   - component: {fileID: 587074832}
   - component: {fileID: 587074835}
+  - component: {fileID: 587074836}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1671,6 +1672,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0
   dec: 0
+--- !u!45 &587074836
+Skybox:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 587074831}
+  m_Enabled: 1
+  m_CustomSkybox: {fileID: 2100000, guid: 6dd72631d4e1e8444866468576e6d349, type: 2}
 --- !u!1001 &612604717
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4104,6 +4114,7 @@ MonoBehaviour:
   JumpForce: 0
   DeathImage: {fileID: 0}
   outpoint: {fileID: 1525653270}
+  ClearRange: 5
   myBall: {fileID: 0}
   gear31: {fileID: 0}
 --- !u!54 &1293054671
